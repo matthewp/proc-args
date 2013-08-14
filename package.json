@@ -1,6 +1,6 @@
 {
   "name": "proc-args",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Processing library for command-line programs.",
   "main": "index.js",
   "scripts": {

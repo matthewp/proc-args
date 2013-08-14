@@ -5,7 +5,7 @@ exports = module.exports = function(callback){
 	stdin.setEncoding('utf8');
 
 	var piped = false;
-	stdin.on('readable', function(){
+	var onreadable = function(){
 		var chunk = this.read();
 
 		if(!piped && chunk == null){
@@ -15,11 +15,15 @@ exports = module.exports = function(callback){
 				? program.args
 				: slice.call(process.argv, 2);
 			callback.apply(null, args);
+			stdin.removeListener('readable', onreadable);
 			stdin.pause();
 		} else if(chunk != null){
+			piped = true;
 			callback(chunk);
 		}
-	});
+	};
+
+	stdin.on('readable', onreadable);
 };
 
 exports.program = require('commander');
