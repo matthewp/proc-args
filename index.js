@@ -1,6 +1,6 @@
 var slice = Array.prototype.slice;
 
-exports = modules.exports = function(callback){
+exports = module.exports = function(callback){
 	var stdin = process.stdin;
 	stdin.setEncoding('utf8');
 
