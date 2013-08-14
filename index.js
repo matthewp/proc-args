@@ -15,6 +15,7 @@ exports = module.exports = function(callback){
 				? program.args
 				: slice.call(process.argv, 2);
 			callback.apply(null, args);
+			stdin.pause();
 		} else if(chunk != null){
 			callback(chunk);
 		}
