@@ -10,6 +10,7 @@ exports = modules.exports = function(callback){
 
 		if(!piped && chunk == null){
 			// We are not being piped.
+			var program = exports.program;
 			var args = program
 				? program.args
 				: slice.call(process.argv, 2);
