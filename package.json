@@ -1,0 +1,14 @@
+{
+  "name": "proc-args",
+  "version": "0.0.1",
+  "description": "Processing library for command-line programs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Phillips <matthew@matthewphillips.info>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "~2.0.0"
+  }
+}
