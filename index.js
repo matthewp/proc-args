@@ -1,4 +1,5 @@
-var slice = Array.prototype.slice;
+var program
+  , slice = Array.prototype.slice;
 
 exports = module.exports = function(callback){
 	var stdin = process.stdin;
@@ -10,7 +11,6 @@ exports = module.exports = function(callback){
 
 		if(!piped && chunk == null){
 			// We are not being piped.
-			var program = exports.program;
 			var args = program
 				? program.args
 				: slice.call(process.argv, 2);
@@ -26,5 +26,12 @@ exports = module.exports = function(callback){
 	stdin.on('readable', onreadable);
 };
 
-exports.program = require('commander');
-exports.program.process = exports;
+Object.defineProperty(exports, 'program', {
+	get: function(){
+		if(!program) {
+			program = require('commander');
+			program.process = exports;
+		}
+		return program;
+	}
+});
